@@ -1,0 +1,266 @@
+/* Reset default styles and set innovative background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #2a3038 0%, #1e242c 100%);
+    min-height: 100vh;
+    color: #ffffff; /* Set default text color to white */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    color: #ffffff; /* Ensure header text is white */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    color: #ffffff; /* Ensure paragraph text is white */
+    font-size: 1.2rem;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    list-style: none; /* Remove default bullets */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the menu items */
+    background-color: #1e242c; /* Background color of the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: relative; /* Position relative for dropdown */
+}
+
+.navbar li {
+    margin: 0 15px; /* Space between navigation items */
+    position: relative; /* Position relative for dropdown */
+}
+
+.navbar a {
+    text-decoration: none; /* Remove underline from links */
+    color: #ffffff; /* Default text color */
+    position: relative; /* Position relative for the pseudo-element */
+    font-size: 18px; /* Font size for navigation links */
+}
+
+.navbar a::before {
+    content: ''; /* Create a pseudo-element for the neon effect */
+    position: absolute; /* Position it absolutely */
+    left: 50%; /* Center horizontally */
+    bottom: 0; /* Align to the bottom */
+    width: 100%; /* Full width */
+    height: 2px; /* Height of the neon line */
+    background: rgba(0, 0, 255, 1); /* Blue neon color */
+    transform: translateX(-50%); /* Center the line */
+    transition: all 0.3s ease; /* Smooth transition */
+    opacity: 0; /* Start hidden */
+}
+
+.navbar a:hover::before {
+    opacity: 1; /* Show the neon line on hover */
+    transform: translateX(-50%) scaleX(1.2); /* Scale effect on hover */
+    box-shadow: 0 0 5px rgba(0, 0, 255, 1), /* Neon glow */
+                0 0 10px rgba(0, 0, 255, 1), /* Neon glow */
+                0 0 15px rgba(0, 0, 255, 1); /* Neon glow */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position it absolutely */
+    background-color: rgba(0, 0, 0, 0.8); /* Background color for dropdown */
+    padding: 10px; /* Padding around dropdown items */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1; /* Ensure it appears above other elements */
+    white-space: nowrap; /* Prevent items from wrapping */
+    overflow: hidden; /* Hide overflow */
+    width: 400%; /* Set the width to 200% of the parent element */
+}
+
+.navbar li:hover .dropdown {
+    display: flex; /* Show dropdown on hover */
+    flex-direction: column; /* Align items in a column */
+}
+
+.dropdown li {
+    margin: 5px 0; /* Space between dropdown items */
+    list-style: none; /* Remove bullets */
+}
+
+.dropdown a {
+    color: #ffffff; /* Text color for dropdown links */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Padding for dropdown links */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+/* Remove the blue background on hover */
+.dropdown a:hover {
+    background: none; /* No background on hover */
+}
+
+/* Course Section Styles */
+.course-section {
+    color: #ffffff; /* Ensure course section text is white */
+}
+
+/* Additional styles for cubes, etc. */
+.cube-container {
+    display: flex; /* השתמש ב-flexbox */
+    justify-content: space-around; /* רווח שווה בין הקוביות */
+    align-items: center; /* מרכז את הקוביות אנכית */
+    margin-top: 20px; /* רווח מעל הקונטיינר */
+}
+
+.cube {
+    width: 330px; /* רוחב קבוע לקוביות (גדול ב-20%) */
+    height: 288px; /* גובה קבוע לקוביות (גדול ב-15%) */
+    background: rgba(255, 255, 255, 0.07); /* רקע קבוע */
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), /* צל קבוע */
+                0 0 35px rgba(255, 165, 0, 0.6), /* זוהר ניאון */
+                0 0 70px rgba(255, 165, 0, 0.4); /* זוהר ניאון */
+    position: relative;
+    z-index: 1;
+    color: #ffffff; /* צבע טקסט */
+    margin: 0 10px; /* רווח בין הקוביות */
+    display: flex; /* מאפשר למרכז את התוכן בתוך הקוביה */
+    flex-direction: column; /* מאפשר למרכז את התוכן אנכית */
+    justify-content: center; /* מרכז את התוכן אנכית */
+    text-align: center; /* מרכז את הטקסט */
+}
+
+.cube h3 {
+    color: #ffffff; /* Ensure cube header text is white */
+}
+
+.cube p {
+    color: #ffffff; /* Ensure cube paragraph text is white */
+}
+
+/* Add a hover effect for more glow */
+.cube:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 50px rgba(255, 165, 0, 1),
+                0 0 100px rgba(255, 165, 0, 0.8);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack menu items vertically on small screens */
+    }
+}
+
+.flag {
+    position: absolute; /* Position the flag absolutely */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    width: 30%; /* Set the width to 30% of the original size (70% smaller) */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.greek-flag {
+    position: absolute; /* Position the flag absolutely */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    width: 30%; /* Set the width to 30% of the original size (70% smaller) */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.greek-flag img {
+    width: 10%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.syllabus {
+    margin: 20px; /* Add margin around the syllabus container */
+}
+
+.syllabus section {
+    margin-bottom: 20px; /* Space between sections */
+    padding: 15px; /* Padding inside each section */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for sections */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.syllabus h2 {
+    color: #ffffff; /* Ensure section headings are white */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+.syllabus h3 {
+    color: #09ed59; /* Ensure subheadings are white */
+    margin-top: 10px; /* Space above subheadings */
+}
+
+@keyframes neon {
+    0% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.8); }
+    50% { text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1); }
+    100% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.8); }
+}
+
+.neon {
+    animation: neon 0.5s ease-in-out forwards;
+}
+
+/* Neon effect for list items */
+ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0; /* Remove padding */
+}
+
+ul li {
+    position: relative; /* Position relative for the pseudo-element */
+    padding-left: 20px; /* Space for the custom bullet */
+    margin-bottom: 10px; /* Space between list items */
+    color: #ffffff; /* Text color */
+}
+
+ul li::before {
+    content: ''; /* Create a custom bullet */
+    position: absolute; /* Position it absolutely */
+    left: 0; /* Align to the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    width: 10px; /* Width of the bullet */
+    height: 10px; /* Height of the bullet */
+    border-radius: 50%; /* Make it circular */
+    background: rgba(255, 165, 0, 1); /* Neon color (orange) */
+    box-shadow: 0 0 5px rgba(255, 165, 0, 1), /* Neon glow */
+                0 0 10px rgba(255, 165, 0, 1), /* Neon glow */
+                0 0 15px rgba(255, 165, 0, 1); /* Neon glow */
+    animation: pulse 1.5s infinite; /* Add a pulse animation */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2); /* Scale up */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
