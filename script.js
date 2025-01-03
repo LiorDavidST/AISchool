@@ -47,3 +47,32 @@ function changeCubeColors() {
 
 // Change cube colors every 5 seconds
 setInterval(changeCubeColors, 5000);
+
+// Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+
+    if (hamburger && navbar) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navbar.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+    }
+});

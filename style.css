@@ -39,9 +39,9 @@ header p {
 
 /* Navigation Bar Styles */
 .navbar {
+    display: flex; /* Show navbar by default */
     list-style: none; /* Remove bullets from the navbar */
     padding: 0; /* Remove default padding */
-    display: flex; /* Use flexbox for horizontal layout */
     position: fixed; /* Fix the position */
     top: 0; /* Align to the top */
     left: 3cm; /* Move the navbar 3 cm to the left */
@@ -358,7 +358,8 @@ ul li::before {
 
 /* Add margin to the main content of the About Us page */
 main {
-    margin-left: 5cm; /* Push the entire main content 5 cm to the right */
+    margin-right: 3cm; /* Changed from margin-left to margin-right */
+    margin-left: 0;
 }
 
 /* Alternatively, if you want to target specific sections */
@@ -412,30 +413,17 @@ body > h1:nth-of-type(2) {
 
 /* Add spacing between h2 and paragraphs in About page */
 .course-section h2 {
-    margin-bottom: 10px; /* Gap between h2 and following paragraph */
-    margin-top: 30px; /* Increased gap between paragraph and h2 */
+    margin-bottom: 10px; /* Adds small gap between h2 and paragraph */
 }
 
-/* First h2 shouldn't have top margin */
-.course-section h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
+/* If you want to add space before h2 as well */
+.course-section h2:not(:first-child) {
+    margin-top: 15px; /* Adds space above h2 except for the first one */
 }
 
-/* Spacing between paragraphs */
+/* Keep paragraph margins consistent */
 .course-section p {
-    margin-top: 0;
-    margin-bottom: 15px; /* Gap between paragraphs */
-}
-
-/* Add extra space before h2 when it follows a paragraph */
-.course-section p + h2 {
-    margin-top: 40px; /* Larger gap when h2 follows a paragraph */
-}
-
-/* Remove bottom margin from last paragraph in a section */
-.course-section p:last-child {
-    margin-bottom: 0;
+    margin-top: 0; /* Ensures the gap is controlled by h2 margin-bottom */
 }
 
 /* Mobile responsive styles */
@@ -508,4 +496,112 @@ body > h1:nth-of-type(2) {
         margin-top: 30px;
         padding: 15px;
     }
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    cursor: pointer;
+    position: fixed; /* Fix the position */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Position it in the top right corner */
+    z-index: 1001; /* Ensure it appears above other content */
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none; /* Hide navbar on mobile */
+    }
+
+    .hamburger {
+        display: block !important; /* Show hamburger on mobile */
+    }
+
+    /* Styles for the active navbar when hamburger is clicked */
+    .navbar.active {
+        display: flex; /* Show navbar when active */
+        flex-direction: column; /* Stack items vertically */
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        left: 0; /* Align to left */
+        width: 100%; /* Full width */
+        height: 100vh; /* Full height */
+        background: rgba(0, 0, 0, 0.9); /* Background color */
+        z-index: 1000; /* Ensure it appears above other content */
+    }
+}
+
+/* Flag container positioning */
+.flag-container {
+    position: fixed;
+    top: 0;
+    right: 0; /* Changed from left: 0 to right: 0 */
+    width: 3cm;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed from center to flex-start */
+    z-index: 1000;
+    padding-top: 20px; /* Add some padding from the top */
+}
+
+.flag-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag {
+    width: 2cm;
+    height: auto;
+}
+
+.location-text {
+    color: #ffffff;
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    width: 2cm;
+}
+
+/* Adjust main content margin for the right-side flag */
+main {
+    margin-right: 3cm; /* Changed from margin-left to margin-right */
+    margin-left: 0;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .flag-container {
+        width: 2cm; /* Smaller on mobile */
+        padding: 5px;
+    }
+
+    .flag {
+        width: 1.5cm; /* Smaller flag on mobile */
+    }
+
+    .location-text {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    /* Styles for tablets and smaller devices */
+}
+
+@media screen and (max-width: 768px) {
+    /* Styles for mobile devices */
 }
