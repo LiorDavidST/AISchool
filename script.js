@@ -5,7 +5,6 @@ const colors = [
     'rgba(0, 255, 0, 1)',   // Green
     'rgba(255, 0, 0, 1)',   // Red
     'rgba(255, 165, 0, 1)', // Orange
-    'rgba(75, 0, 130, 1)',  // Indigo
     'rgba(238, 130, 238, 1)' // Violet
 ];
 

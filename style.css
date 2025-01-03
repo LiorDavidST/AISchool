@@ -20,35 +20,40 @@ body {
 }
 
 header {
-    text-align: center;
-    margin-bottom: 3rem;
+    margin-top: 20px;
+    margin-bottom: 1cm; /* Reduced from 2cm */
 }
 
 header h1 {
-    color: #ffffff; /* Ensure header text is white */
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px 0;
+    margin: 0;
 }
 
 header p {
+    text-align: center;
     color: #ffffff; /* Ensure paragraph text is white */
     font-size: 1.2rem;
 }
 
 /* Navigation Bar Styles */
 .navbar {
-    list-style: none; /* Remove default bullets */
-    padding: 0; /* Remove padding */
+    list-style: none; /* Remove bullets from the navbar */
+    padding: 0; /* Remove default padding */
     display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the menu items */
-    background-color: #1e242c; /* Background color of the navbar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    position: relative; /* Position relative for dropdown */
+    position: fixed; /* Fix the position */
+    top: 0; /* Align to the top */
+    left: 3cm; /* Move the navbar 3 cm to the left */
+    width: calc(100% - 3cm); /* Adjust width to account for the left margin */
+    z-index: 1000; /* Ensure it appears above other elements */
+    margin-bottom: 0; /* Remove any bottom margin from navbar */
+    padding-bottom: 0; /* Remove any bottom padding */
 }
 
 .navbar li {
     margin: 0 15px; /* Space between navigation items */
-    position: relative; /* Position relative for dropdown */
+    list-style: none; /* Ensure no bullets for list items */
 }
 
 .navbar a {
@@ -116,20 +121,25 @@ header p {
 
 /* Course Section Styles */
 .course-section {
+    margin-left: 3cm; /* Move the course section 3 cm to the right to align with the navbar */
     color: #ffffff; /* Ensure course section text is white */
 }
 
 /* Additional styles for cubes, etc. */
 .cube-container {
-    display: flex; /* השתמש ב-flexbox */
-    justify-content: space-around; /* רווח שווה בין הקוביות */
-    align-items: center; /* מרכז את הקוביות אנכית */
-    margin-top: 20px; /* רווח מעל הקונטיינר */
+    display: flex; /* Use flexbox for alignment */
+    align-items: stretch; /* Stretch items to match heights */
+    justify-content: space-around; /* Space between cubes */
+    gap: 20px; /* Space between cubes */
+    margin-top: 20px; /* Reduced space above cube-container */
 }
 
 .cube {
-    width: 330px; /* רוחב קבוע לקוביות (גדול ב-20%) */
-    height: 288px; /* גובה קבוע לקוביות (גדול ב-15%) */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure both cubes have the same height */
+    flex: 1; /* Make cubes take equal space */
+    max-width: 500px; /* Optional: limit maximum width */
     background: rgba(255, 255, 255, 0.07); /* רקע קבוע */
     backdrop-filter: blur(15px);
     border-radius: 15px;
@@ -142,14 +152,41 @@ header p {
     z-index: 1;
     color: #ffffff; /* צבע טקסט */
     margin: 0 10px; /* רווח בין הקוביות */
-    display: flex; /* מאפשר למרכז את התוכן בתוך הקוביה */
-    flex-direction: column; /* מאפשר למרכז את התוכן אנכית */
-    justify-content: center; /* מרכז את התוכן אנכית */
-    text-align: center; /* מרכז את הטקסט */
 }
 
 .cube h3 {
     color: #ffffff; /* Ensure cube header text is white */
+    position: relative; /* Required for positioning the pseudo-element */
+    padding-bottom: 10px; /* Space between text and underline */
+    margin-bottom: 15px; /* Space between underline and next content */
+}
+
+.cube h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: #00ffff; /* Bright cyan blue color */
+    box-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 15px #00ffff; /* Multiple layers of glow */
+    animation: glow 2s ease-in-out infinite; /* Optional: adds a subtle pulsing effect */
+}
+
+/* Optional: Animation for the glow effect */
+@keyframes glow {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
 }
 
 .cube p {
@@ -180,12 +217,12 @@ header p {
 }
 
 .greek-flag {
-    position: absolute; /* Position the flag absolutely */
+    position: fixed; /* Fix the position */
     top: 10px; /* Distance from the top */
-    left: 10px; /* Distance from the left */
-    width: 30%; /* Set the width to 30% of the original size (70% smaller) */
-    height: auto; /* Maintain aspect ratio */
+    left: 10px; /* Align to the left */
     z-index: 1000; /* Ensure it appears above other elements */
+    height: 40px; /* Set a height for the flag */
+    width: auto; /* Maintain aspect ratio */
 }
 
 .greek-flag img {
@@ -262,5 +299,213 @@ ul li::before {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+/* עיצוב עבור מסכים קטנים (סמארטפונים) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* סידור אנכי של התפריט */
+    }
+
+    .navbar li {
+        margin: 10px 0; /* רווח בין פריטי התפריט */
+    }
+
+    .cube {
+        width: 100%; /* קוביות יתפסו את כל רוחב המסך */
+        height: auto; /* גובה אוטומטי */
+    }
+
+    .syllabus-title {
+        font-size: 20px; /* גודל טקסט קטן יותר */
+    }
+
+    .dropdown {
+        width: 100%; /* רוחב התפריט יהיה 100% */
+    }
+
+    .dropdown a {
+        padding: 10px; /* רווח גדול יותר בין פריטי התפריט */
+    }
+}
+
+/* Title styles */
+#neon-title {
+    color: var(--text-color); /* Use the text color variable */
+    text-align: center;
+    margin-top: 20px; /* Space above the title */
+    position: fixed; /* Fix the position */
+    bottom: 10px; /* Distance from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.course-title {
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Space above the title */
+    font-size: 28px; /* Adjust font size as needed */
+    color: var(--text-color); /* Use the text color variable */
+}
+
+.cube-link {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent element */
+    display: flex;
+    flex: 1; /* Make links take full height of parent */
+}
+
+/* Add margin to the main content of the About Us page */
+main {
+    margin-left: 5cm; /* Push the entire main content 5 cm to the right */
+}
+
+/* Alternatively, if you want to target specific sections */
+section {
+    margin-left: 5cm; /* Push each section 5 cm to the right */
+}
+
+footer {
+    text-align: center; /* Center the text in the footer */
+    margin-top: 0.5cm; /* Space above the footer */
+    padding: 10px 0; /* Optional: Add some padding for better spacing */
+    background-color: #333; /* Optional: Background color for the footer */
+    color: #fff; /* Text color */
+    position: relative; /* Ensure it stays in the normal flow */
+    width: 100%; /* Full width */
+}
+
+/* Style for syllabus page headings */
+.syllabus-header {
+    margin-left: 3cm; /* Align with cube-container */
+    margin-top: 0.5cm; /* Space below navbar */
+    margin-bottom: 20px; /* Space between header and cube-container */
+}
+
+.syllabus-header h1:first-child {
+    margin-bottom: 0; /* Remove bottom margin completely */
+    line-height: 1; /* Reduce line height */
+    padding-bottom: 0; /* Remove any padding */
+}
+
+.syllabus-header h1:last-child {
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: normal;
+    color: #ffffff;
+    line-height: 1; /* Reduce line height */
+    padding-top: 0; /* Remove any padding */
+}
+
+/* Style specifically for the second heading */
+body > h1:nth-of-type(2) {
+    margin-top: 20px; /* Less space between the two headings */
+    font-size: 1.5em; /* Slightly smaller than the first heading */
+    font-weight: normal; /* Optional: makes it look more like a subtitle */
+}
+
+/* Keep cube-container spacing consistent */
+.cube-container {
+    margin-top: 20px;
+}
+
+/* Add spacing between h2 and paragraphs in About page */
+.course-section h2 {
+    margin-bottom: 10px; /* Gap between h2 and following paragraph */
+    margin-top: 30px; /* Increased gap between paragraph and h2 */
+}
+
+/* First h2 shouldn't have top margin */
+.course-section h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Spacing between paragraphs */
+.course-section p {
+    margin-top: 0;
+    margin-bottom: 15px; /* Gap between paragraphs */
+}
+
+/* Add extra space before h2 when it follows a paragraph */
+.course-section p + h2 {
+    margin-top: 40px; /* Larger gap when h2 follows a paragraph */
+}
+
+/* Remove bottom margin from last paragraph in a section */
+.course-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    /* Navigation adjustments */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .navbar li {
+        margin: 5px 0;
+    }
+
+    /* Flag container adjustments */
+    .flag-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        background: none;
+        padding: 10px;
+    }
+
+    .flag {
+        width: 1.5cm;
+        margin: 0 auto;
+    }
+
+    /* Header and content adjustments */
+    .syllabus-header {
+        margin-left: 0;
+        margin-top: 150px; /* Space for stacked navbar */
+        padding: 0 20px;
+    }
+
+    .course-section {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    /* Cube container adjustments */
+    .cube-container {
+        flex-direction: column;
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .cube {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    /* Main content adjustments */
+    main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* Assessment grid adjustments */
+    .assessment-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Footer adjustments */
+    footer {
+        margin-top: 30px;
+        padding: 15px;
     }
 }
