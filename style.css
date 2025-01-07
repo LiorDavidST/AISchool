@@ -5,7 +5,14 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%; /* Ensure the body takes the full height of the viewport */
+    margin: 0; /* Remove default margin */
+}
+
 body {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background: linear-gradient(135deg, #2a3038 0%, #1e242c 100%);
@@ -88,7 +95,7 @@ header p {
 .dropdown {
     display: none; /* Hide dropdown by default */
     position: absolute; /* Position it absolutely */
-    background-color: rgba(0, 0, 0, 0.8); /* Background color for dropdown */
+   /* background-color: rgba(0, 0, 0, 0.8); /* Background color for dropdown */
     padding: 10px; /* Padding around dropdown items */
     border-radius: 5px; /* Rounded corners */
     z-index: 1; /* Ensure it appears above other elements */
@@ -131,7 +138,8 @@ header p {
     align-items: stretch; /* Stretch items to match heights */
     justify-content: space-around; /* Space between cubes */
     gap: 20px; /* Space between cubes */
-    margin-top: 20px; /* Reduced space above cube-container */
+    margin-top: 100px; /* Reduced space above cube-container */
+    margin-left: 100px; /* Adjust this value to move the cube more to the right */
 }
 
 .cube {
@@ -340,6 +348,7 @@ ul li::before {
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust for centering */
     z-index: 1000; /* Ensure it appears above other content */
+    font-size: 20px; /* Adjusted font size to be 30% smaller */
 }
 
 .course-title {
@@ -347,6 +356,7 @@ ul li::before {
     margin-top: 20px; /* Space above the title */
     font-size: 28px; /* Adjust font size as needed */
     color: var(--text-color); /* Use the text color variable */
+ color: var(--text-color); /* Use the text color variable */
 }
 
 .cube-link {
@@ -354,10 +364,13 @@ ul li::before {
     color: inherit; /* Inherit color from parent element */
     display: flex;
     flex: 1; /* Make links take full height of parent */
+    margin-bottom: 0; /* Ensure no margin below the cube-link */
 }
 
 /* Add margin to the main content of the About Us page */
 main {
+    flex: 1; /* Allow main content to grow and take available space */
+    padding: 20px; /* Add padding for content */
     margin-right: 3cm; /* Changed from margin-left to margin-right */
     margin-left: 0;
 }
@@ -368,12 +381,10 @@ section {
 }
 
 footer {
-    text-align: center; /* Center the text in the footer */
-    margin-top: 0.5cm; /* Space above the footer */
-    padding: 10px 0; /* Optional: Add some padding for better spacing */
-    background-color: #333; /* Optional: Background color for the footer */
-    color: #fff; /* Text color */
-    position: relative; /* Ensure it stays in the normal flow */
+
+    color: #ffffff; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Padding for spacing */
     width: 100%; /* Full width */
 }
 
@@ -604,4 +615,27 @@ main {
 
 @media screen and (max-width: 768px) {
     /* Styles for mobile devices */
+}
+
+.product-section {
+    padding: 20px; /* Add padding for the product section */
+    text-align: center; /* Center the text */
+}
+
+.product-section h2 {
+    margin-top: 20px; /* Add margin above the heading */
+}
+
+.announcement {
+    background-color: #8c8c877a; /* Light background color for the announcement */
+    border: 1px solid #ccc; /* Border around the announcement */
+    padding: 15px; /* Padding for the announcement */
+    margin: 20px 0; /* Margin above and below the announcement */
+    text-align: center; /* Center the text */
+}
+
+.announcement h3 {
+    color: #4f76d9; /* Change color for the announcement heading */
+    font-size: 24px; /* Optional: Increase heading size as well */
+
 }
